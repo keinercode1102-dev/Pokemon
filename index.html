@@ -2,52 +2,42 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
-<title>PokéVault · Bóveda Pokémon</title>
-<link rel="stylesheet" href="styles.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dragon Ball · Explorador de personajes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header class="pokedex-header">
-  <figure class="brand">
-    <svg class="brand-mark" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-      <polygon points="24,3 43,13.5 43,34.5 24,45 5,34.5 5,13.5" fill="none" stroke="#49e8ff" stroke-width="2"/>
-      <polygon points="24,3 43,13.5 43,34.5 24,45 5,34.5 5,13.5" fill="rgba(73,232,255,0.06)"/>
-      <circle cx="24" cy="24" r="7" fill="none" stroke="#b07bff" stroke-width="2"/>
-      <circle cx="24" cy="24" r="2.4" fill="#ff5fae"/>
-    </svg>
-    <figcaption>
-      <h1>PokéVault</h1>
-      <p class="tagline">bóveda de datos · gen I</p>
-    </figcaption>
-  </figure>
-  <search class="search-box">
-    <input type="text" id="searchInput" placeholder="Nombre o Nº" aria-label="Buscar Pokémon">
+<div class="hero">
+  <div class="hero-orb"></div>
+  <h1>DRAGON BALL</h1>
+  <p class="tag">Explora personajes, razas y transformaciones del universo Dragon Ball, con datos en vivo de la API pública.</p>
+</div>
+
+<div class="controls">
+  <div class="search-row">
+    <input id="searchInput" type="text" placeholder="Buscar un personaje, ej. Goku, Vegeta, Piccolo...">
     <button id="searchBtn">Buscar</button>
-  </search>
-</header>
+  </div>
+  <div class="race-row" id="raceRow"></div>
+</div>
 
-<ul id="vaultStats" class="vault-stats" style="display:none;"></ul>
+<div class="content">
+  <p class="status-line" id="statusLine">Cargando personajes...</p>
+  <div class="grid" id="grid"></div>
+  <button class="load-more" id="loadMoreBtn" style="display:none;">Cargar más</button>
+</div>
 
-<menu id="filtersBar" class="filters-bar" style="display:none;">
-  <li><button class="filter-chip active" data-rarity="all">Todas las rarezas</button></li>
-  <li><button class="filter-chip" data-rarity="comun">Común</button></li>
-  <li><button class="filter-chip" data-rarity="pocoComun">Poco común</button></li>
-  <li><button class="filter-chip" data-rarity="raro">Raro</button></li>
-  <li><button class="filter-chip" data-rarity="muyRaro">Muy raro</button></li>
-  <li><button class="filter-chip" data-rarity="legendario">Legendario</button></li>
-  <li><button class="filter-chip" data-rarity="mitico">Mítico</button></li>
-</menu>
+<footer>
+  Datos proporcionados por <a href="https://dragonball-api.com" target="_blank" rel="noopener">dragonball-api.com</a>. Proyecto de fans, sin afiliación oficial con Toei Animation o Bird Studio.
+</footer>
 
-<nav id="sectionNav" class="section-nav" style="display:none;"></nav>
-
-<p id="statusContainer" class="status-msg" style="display:none;"></p>
-<output id="loaderContainer" class="loader" style="display:none;" aria-hidden="true"></output>
-<p id="loadingNote" class="loading-note" style="display:none;">Accediendo a la bóveda · sincronizando 151 registros originales…</p>
-
-<main id="sectionsContainer" style="width:100%; max-width:1300px;"></main>
-
-<dialog id="modalCard" class="modal-card"></dialog>
+<div class="overlay" id="overlay">
+  <div class="modal" id="modal"></div>
+</div>
 
 <script src="script.js"></script>
 </body>
